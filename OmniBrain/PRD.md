@@ -1,4 +1,4 @@
-# PRD.md
+# PRD(Product Requirements Document)
 
 # OmniBrain - Agentic Multi-Modal RAG Orchestrator
 
