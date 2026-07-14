@@ -27,8 +27,7 @@ and combines them into a single intelligent reasoning pipeline powered by multip
 
 The primary goal is to minimize hallucinations while maximizing grounded, explainable responses.
 
----
-
+--
 # Problem Statement
 
 Enterprise organizations store critical information across multiple formats including documents, spreadsheets, databases, reports, and images.
