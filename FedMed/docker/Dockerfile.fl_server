@@ -1,0 +1,19 @@
+FROM python:3.12-slim
+
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    cmake \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY fl_server /app/fl_server
+COPY encryption /app/encryption
+COPY models /app/models
+COPY grpc /app/grpc
+
+RUN pip install --no-cache-dir flwr tenseal numpy torch monai protobuf
+
+EXPOSE 8080
+
+CMD ["python", "fl_server/server.py"]
