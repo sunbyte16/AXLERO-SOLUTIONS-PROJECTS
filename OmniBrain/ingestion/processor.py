@@ -15,31 +15,87 @@ class DocumentChunk:
 
 
 CHUNK_SIZE = 1000
-CHUNK_OVERLAP = 200
+CHUNK_OVERLAP = 150
 
 
 def _split_text(text: str, page_number: int | None = None) -> list[DocumentChunk]:
-    words = text.split()
-    chunks: list[DocumentChunk] = []
-    start = 0
-    index = 0
+    """Split text into sentence and paragraph-aware chunks with overlap."""
+    clean_text = text.strip()
+    if not clean_text:
+        return []
 
-    while start < len(words):
-        end = min(start + CHUNK_SIZE, len(words))
-        chunk_text = " ".join(words[start:end])
-        if chunk_text.strip():
-            chunks.append(
-                DocumentChunk(
-                    text=chunk_text,
-                    page_number=page_number,
-                    chunk_index=index,
-                    metadata={"page": str(page_number) if page_number else "unknown"},
+    # Split into logical paragraphs first
+    paragraphs = [p.strip() for p in clean_text.split("\n\n") if p.strip()]
+    if not paragraphs:
+        paragraphs = [clean_text]
+
+    chunks: list[DocumentChunk] = []
+    current_chunk: list[str] = []
+    current_length = 0
+    chunk_index = 0
+
+    for paragraph in paragraphs:
+        para_len = len(paragraph)
+        if current_length + para_len + 2 <= CHUNK_SIZE:
+            current_chunk.append(paragraph)
+            current_length += para_len + 2
+        else:
+            if current_chunk:
+                combined_text = "\n\n".join(current_chunk)
+                chunks.append(
+                    DocumentChunk(
+                        text=combined_text,
+                        page_number=page_number,
+                        chunk_index=chunk_index,
+                        metadata={
+                            "page": str(page_number) if page_number else "unknown",
+                            "char_count": str(len(combined_text)),
+                        },
+                    )
                 )
+                chunk_index += 1
+
+            # Handle paragraph longer than chunk size by sentence splitting
+            if para_len > CHUNK_SIZE:
+                words = paragraph.split()
+                sub_start = 0
+                while sub_start < len(words):
+                    sub_end = min(sub_start + 150, len(words))
+                    sub_text = " ".join(words[sub_start:sub_end])
+                    chunks.append(
+                        DocumentChunk(
+                            text=sub_text,
+                            page_number=page_number,
+                            chunk_index=chunk_index,
+                            metadata={
+                                "page": str(page_number) if page_number else "unknown",
+                                "char_count": str(len(sub_text)),
+                            },
+                        )
+                    )
+                    chunk_index += 1
+                    if sub_end >= len(words):
+                        break
+                    sub_start = sub_end - 25
+                current_chunk = []
+                current_length = 0
+            else:
+                current_chunk = [paragraph]
+                current_length = para_len
+
+    if current_chunk:
+        combined_text = "\n\n".join(current_chunk)
+        chunks.append(
+            DocumentChunk(
+                text=combined_text,
+                page_number=page_number,
+                chunk_index=chunk_index,
+                metadata={
+                    "page": str(page_number) if page_number else "unknown",
+                    "char_count": str(len(combined_text)),
+                },
             )
-            index += 1
-        if end >= len(words):
-            break
-        start = end - CHUNK_OVERLAP
+        )
 
     return chunks
 

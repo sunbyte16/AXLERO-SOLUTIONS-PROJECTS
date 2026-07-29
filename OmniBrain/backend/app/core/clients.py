@@ -57,3 +57,5 @@ async def ensure_qdrant_collection() -> None:
             vectors_config=VectorParams(size=1536, distance=Distance.COSINE),
         )
         logger.info("qdrant_collection_created", collection=settings.QDRANT_COLLECTION)
+
+

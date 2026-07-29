@@ -7,9 +7,10 @@ from rag.pipeline import search_context
 logger = get_logger(__name__)
 
 SYSTEM_PROMPT = """You are OmniBrain, an enterprise AI assistant.
-Answer ONLY using the provided context. If the context is insufficient, say so clearly.
-Always be precise, professional, and cite sources when possible.
-Never invent facts or citations."""
+Answer ONLY using the provided context. Every factual claim must be grounded in the context.
+Include source citations in the format [Source: Document <id>, Page: <page>] for statements drawn directly from the text.
+If the context is insufficient or ungrounded, say so clearly.
+Never invent facts, statistics, or fake citations."""
 
 
 class SupervisorAgent:
@@ -29,8 +30,8 @@ class SupervisorAgent:
             }
 
         context_text = "\n\n---\n\n".join(
-            f"[Source {i+1}] (Page {c.get('page_number', 'N/A')}, Score: {c['score']:.2f})\n{c['text']}"
-            for i, c in enumerate(contexts)
+            f"[Source: Document {c['document_id'][:8]}, Page: {c.get('page_number', 'N/A')}] (Relevance Score: {c['score']:.2f})\n{c['text']}"
+            for c in contexts
         )
 
         from openai import AsyncOpenAI
@@ -42,7 +43,7 @@ class SupervisorAgent:
                 {"role": "system", "content": SYSTEM_PROMPT},
                 {
                     "role": "user",
-                    "content": f"Context:\n{context_text}\n\nQuestion: {query}",
+                    "content": f"Retrieved Context:\n{context_text}\n\nUser Question: {query}",
                 },
             ],
             temperature=0.1,
@@ -59,12 +60,13 @@ class SupervisorAgent:
                 "excerpt": c["text"][:200] + "..." if len(c["text"]) > 200 else c["text"],
                 "confidence": round(c["score"], 2),
             }
-            for c in contexts[:3]
+            for c in contexts[:5]
         ]
 
         return {
             "answer": answer,
             "citations": citations,
-            "confidence": round(avg_score, 2),
+            "confidence": round(min(avg_score, 1.0), 2),
             "agent_used": "supervisor",
         }
+

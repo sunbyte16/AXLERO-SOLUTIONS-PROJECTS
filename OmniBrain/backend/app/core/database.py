@@ -1,8 +1,5 @@
 """Database engine and session management."""
 
-import json
-import time
-import urllib.request
 from collections.abc import AsyncGenerator
 
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
@@ -12,37 +9,6 @@ from app.core.config import settings
 from app.core.logging import get_logger
 
 logger = get_logger(__name__)
-
-
-#region debug-point C:db-session-reporting
-def _report_debug_event(hypothesis_id: str, msg: str, data: dict | None = None) -> None:
-    try:
-        debug_url = "http://127.0.0.1:7777/event"
-        session_id = "register-500-error"
-        with open(".dbg/register-500-error.env", "r", encoding="utf-8") as env_file:
-            for line in env_file:
-                if line.startswith("DEBUG_SERVER_URL="):
-                    debug_url = line.split("=", 1)[1].strip() or debug_url
-                elif line.startswith("DEBUG_SESSION_ID="):
-                    session_id = line.split("=", 1)[1].strip() or session_id
-        payload = {
-            "sessionId": session_id,
-            "runId": "pre-fix",
-            "hypothesisId": hypothesis_id,
-            "location": "backend/app/core/database.py",
-            "msg": f"[DEBUG] {msg}",
-            "data": data or {},
-            "ts": int(time.time() * 1000),
-        }
-        request = urllib.request.Request(
-            debug_url,
-            data=json.dumps(payload).encode("utf-8"),
-            headers={"Content-Type": "application/json"},
-        )
-        urllib.request.urlopen(request, timeout=2).read()
-    except Exception:
-        pass
-#endregion
 
 
 def _create_engine_for(url: str):
@@ -104,8 +70,7 @@ async def get_db() -> AsyncGenerator[AsyncSession, None]:
             yield session
             await session.commit()
         except Exception:
-            #region debug-point C:db-session-rollback
-            _report_debug_event("C", "database session rollback triggered", {})
-            #endregion
             await session.rollback()
             raise
+
+
