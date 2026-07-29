@@ -17,7 +17,7 @@
 </div>
 
 <div align="center">
-  <h3>👨‍💻 Created By <a href="https://github.com/sunbyte16" target="_blank">𝕊𝕦𝕟𝕚𝕝 𝕊𝕙𝕒𝕣𝕞𝕒</a> ❤️</h3>
+  <h3>👨‍💻 Crafted By <a href="https://github.com/sunbyte16" target="_blank">𝕊𝕦𝕟𝕚𝕝 𝕊𝕙𝕒𝕣𝕞𝕒</a> ❤️</h3>
   
   <a href="https://github.com/sunbyte16" target="_blank">
     <img src="https://img.shields.io/badge/GitHub-sunbyte16-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
