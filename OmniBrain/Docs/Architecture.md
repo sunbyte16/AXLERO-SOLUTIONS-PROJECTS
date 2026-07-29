@@ -122,16 +122,16 @@ Agents
 
 Responsibilities
 
-- Chunk Documents
+- Paragraph and Sentence-Aware Document Chunking
 - Generate Embeddings
 - Similarity Search
 - Metadata Filtering
 
 Technologies
 
-- LangChain
-- Qdrant
-- FAISS (optional)
+- LangChain & Custom Paragraph Processor (`ingestion/processor.py`)
+- Qdrant Vector Database
+- FAISS (optional fallback)
 
 ---
 
@@ -353,7 +353,7 @@ omnibrain/
 │
 ├── storage/
 │
-├── docs/
+├── Docs/
 │
 ├── tests/
 │

@@ -37,7 +37,7 @@ database/
 embeddings/
 storage/
 tests/
-docs/
+Docs/
 scripts/
 
 Do not create random folders.
@@ -447,12 +447,13 @@ Every feature requires
 - Unit Tests
 - Integration Tests
 - API Tests
+- Session-Isolated Test Database Fixture (`conftest.py` with dynamic temp SQLite database creation and teardown)
 
 Target Coverage
 
 80%+
 
-Never merge untested code.
+Never merge untested code or leak local database state into test runs.
 
 ---
 

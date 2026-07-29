@@ -189,9 +189,9 @@ Users can:
 
 Every AI answer must include:
 
-- Source Document
-- Page Number
-- Paragraph
+- Explicit citation format: `[Source: Document <id>, Page: <page>]`
+- Source Document ID & Title
+- Page Number / Sentence Context
 - Confidence Score
 
 ---

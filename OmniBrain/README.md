@@ -248,7 +248,7 @@ OmniBrain/
 ├── embeddings/       Embedding generation services
 ├── vision/           Vision workflows
 ├── storage/          Uploaded document storage
-├── Documents/        Product and architecture documentation
+├── Docs/             Product and architecture documentation
 ├── docker-compose.yml
 └── README.md
 ```

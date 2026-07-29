@@ -461,21 +461,21 @@ Finalize the project for release.
 
 | Phase | Status |
 |---------|--------|
-| Phase 1 | Pending |
-| Phase 2 | Pending |
-| Phase 3 | Pending |
-| Phase 4 | Pending |
-| Phase 5 | Pending |
-| Phase 6 | Pending |
-| Phase 7 | Pending |
-| Phase 8 | Pending |
-| Phase 9 | Pending |
-| Phase 10 | Pending |
-| Phase 11 | Pending |
-| Phase 12 | Pending |
-| Phase 13 | Pending |
-| Phase 14 | Pending |
-| Phase 15 | Pending |
+| Phase 1 — Foundation | Completed |
+| Phase 2 — Authentication | Completed |
+| Phase 3 — Document Management | Completed |
+| Phase 4 — Multi-Modal Pipeline | Completed (Paragraph/sentence-aware chunking) |
+| Phase 5 — Embedding & Vector DB | Completed |
+| Phase 6 — Agentic AI Core | Completed |
+| Phase 7 — RAG Engine | Completed (Strict citation grounding) |
+| Phase 8 — Vision Intelligence | In Progress |
+| Phase 9 — SQL Intelligence | Pending |
+| Phase 10 — Chat Experience | Completed |
+| Phase 11 — Analytics & Monitoring | In Progress |
+| Phase 12 — Security & Guardrails | Completed |
+| Phase 13 — Testing & Quality | Active (Session-isolated test suite) |
+| Phase 14 — Deployment | Active (Docker-ready, .env.example) |
+| Phase 15 — Documentation | Active |
 
 ---
 
