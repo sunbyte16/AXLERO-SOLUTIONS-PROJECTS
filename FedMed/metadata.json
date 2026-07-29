@@ -1,0 +1,6 @@
+{
+  "name": "FedMed - Federated Healthcare AI Engine",
+  "description": "Enterprise cross-silo federated learning platform for healthcare, with homomorphic encryption, differential privacy, Flower orchestration, and 3D medical image segmentation.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
