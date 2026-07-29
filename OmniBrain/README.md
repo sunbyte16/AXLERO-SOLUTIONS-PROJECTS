@@ -37,11 +37,12 @@ It combines:
 ## Features
 
 - **Secure Authentication**: user registration, login, JWT-based auth, RBAC, and rate limiting
-- **Document Intelligence**: upload PDFs, DOCX, TXT, CSV, XLSX, and image files
-- **Grounded Chat**: ask questions over uploaded content and receive citation-backed answers
+- **Document Intelligence**: upload PDFs, DOCX, TXT, CSV, XLSX, and image files with paragraph/sentence-aware semantic chunking
+- **Grounded Agentic Chat**: ask questions over uploaded content with strict `[Source: Document <id>, Page: <page>]` citation enforcement
 - **Modern UI**: responsive React dashboard powered by React Query, Zustand, and Tailwind CSS
 - **Scalable Backend**: async FastAPI services designed for containerized deployment
-- **Enterprise Foundation**: clean architecture, modular services, and deployment-ready infrastructure
+- **Automated Test Isolation**: session-isolated Pytest suite using temporary dynamic SQLite engines
+- **Enterprise Foundation**: clean architecture, modular services, `.env.example` templates, and deployment-ready infrastructure
 
 ## Tech Stack
 
@@ -187,6 +188,14 @@ python -m venv .venv
 .venv\Scripts\activate
 pip install -r requirements.txt
 uvicorn app.main:app --reload --port 8000
+```
+
+### Running Tests
+
+OmniBrain features a session-isolated test suite using temporary SQLite databases to prevent state accumulation:
+
+```bash
+python -m pytest backend/tests/
 ```
 
 ### Frontend
