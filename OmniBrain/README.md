@@ -17,7 +17,7 @@ Upload documents, index knowledge, chat with grounded AI, and receive citation-b
 [![GitHub](https://img.shields.io/badge/GitHub-sunbyte16-181717?style=flat-square&logo=github)](https://github.com/sunbyte16)
 [![GitHub](https://img.shields.io/badge/GitHub-ymp7-181717?style=flat-square&logo=github)](https://github.com/ymp7)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Sunil%20Sharma-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/sunil-kumar-bb88bb31a/)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Y%20Monish%20Prasanna-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/yegireddy-monish-prasanna/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Monish%20Prasanna-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/yegireddy-monish-prasanna/)
 [![Portfolio](https://img.shields.io/badge/Portfolio-Visit%20Site-7C3AED?style=flat-square&logo=netlify&logoColor=white)](https://lively-dodol-cc397c.netlify.app)
 
 </div>
@@ -281,15 +281,15 @@ For the full roadmap, see `Documents/Phases.md`.
 - LinkedIn: [Sunil Sharma](https://www.linkedin.com/in/sunil-kumar-bb88bb31a/)
 - Portfolio: [lively-dodol-cc397c.netlify.app](https://lively-dodol-cc397c.netlify.app)
 
-### Y Monish Prasanna
+### Monish Prasanna
 - GitHub: [@ymp7](https://github.com/ymp7)
-- LinkedIn: [Y Monish Prasanna](https://www.linkedin.com/in/yegireddy-monish-prasanna/)
+- LinkedIn: [Monish Prasanna](https://www.linkedin.com/in/yegireddy-monish-prasanna/)
 
 ## Creators
 
 <div align="center">
 
-### Crafted By ♥  𝕊𝕦𝕟𝕚𝕝 𝕊𝕙𝕒𝕣𝕞𝕒 & 𝕐 𝕄𝕠𝕟𝕚𝕤𝕙 ℙ𝕣𝕒𝕤𝕒𝕟𝕟𝕒
+### Crafted By ♥  𝕊𝕦𝕟𝕚𝕝 𝕊𝕙𝕒𝕣𝕞𝕒 & 𝕄𝕠𝕟𝕚𝕤𝕙 ℙ𝕣𝕒𝕤𝕒𝕟𝕟𝕒
 
 </div>
 
