@@ -36,9 +36,18 @@ class SupervisorAgent:
 
         from openai import AsyncOpenAI
 
-        client = AsyncOpenAI(api_key=settings.OPENAI_API_KEY)
+        if settings.active_llm_provider == "gemini":
+            client = AsyncOpenAI(
+                api_key=settings.GEMINI_API_KEY,
+                base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
+            )
+            model_name = "gemini-1.5-flash"
+        else:
+            client = AsyncOpenAI(api_key=settings.OPENAI_API_KEY)
+            model_name = "gpt-4o-mini"
+
         response = await client.chat.completions.create(
-            model="gpt-4o-mini",
+            model=model_name,
             messages=[
                 {"role": "system", "content": SYSTEM_PROMPT},
                 {

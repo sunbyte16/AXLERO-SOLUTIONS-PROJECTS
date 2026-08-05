@@ -12,14 +12,23 @@ logger = get_logger(__name__)
 
 
 async def _generate_embeddings(texts: list[str]) -> list[list[float]]:
-    if not settings.OPENAI_API_KEY:
-        raise ValueError("OPENAI_API_KEY is required for embedding generation")
+    if not settings.has_api_key:
+        raise ValueError("An API key (OPENAI_API_KEY or GEMINI_API_KEY) is required for embedding generation")
 
     from openai import AsyncOpenAI
 
-    client = AsyncOpenAI(api_key=settings.OPENAI_API_KEY)
+    if settings.active_llm_provider == "gemini":
+        client = AsyncOpenAI(
+            api_key=settings.GEMINI_API_KEY,
+            base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
+        )
+        model_name = "text-embedding-004"
+    else:
+        client = AsyncOpenAI(api_key=settings.OPENAI_API_KEY)
+        model_name = "text-embedding-3-small"
+
     response = await client.embeddings.create(
-        model="text-embedding-3-small",
+        model=model_name,
         input=texts,
     )
     return [item.embedding for item in response.data]

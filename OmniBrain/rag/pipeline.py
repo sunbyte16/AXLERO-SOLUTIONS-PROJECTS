@@ -21,9 +21,18 @@ async def search_context(query: str, limit: int = 5) -> list[dict]:
 
     from app.core.clients import get_qdrant
 
-    client = AsyncOpenAI(api_key=settings.OPENAI_API_KEY)
+    if settings.active_llm_provider == "gemini":
+        client = AsyncOpenAI(
+            api_key=settings.GEMINI_API_KEY,
+            base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
+        )
+        model_name = "text-embedding-004"
+    else:
+        client = AsyncOpenAI(api_key=settings.OPENAI_API_KEY)
+        model_name = "text-embedding-3-small"
+
     embedding_resp = await client.embeddings.create(
-        model="text-embedding-3-small",
+        model=model_name,
         input=query,
     )
     vector = embedding_resp.data[0].embedding

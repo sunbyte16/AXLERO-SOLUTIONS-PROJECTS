@@ -26,11 +26,11 @@ class RAGService:
 
     async def generate_response(self, user: User, query: str) -> RAGResult:
         """Generate a grounded response using the agent pipeline."""
-        if not settings.OPENAI_API_KEY:
+        if not settings.has_api_key:
             return RAGResult(
                 answer=(
-                    "OmniBrain is running, but no OpenAI API key is configured. "
-                    "Add OPENAI_API_KEY to your .env file, upload documents, "
+                    "OmniBrain is running, but no API key is configured. "
+                    "Add OPENAI_API_KEY or GEMINI_API_KEY to your .env file, upload documents, "
                     "and the RAG pipeline will retrieve and cite relevant content."
                 ),
                 citations=[],
