@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --swarm-bg: #07111f;
+    --swarm-panel: rgba(9, 18, 31, 0.72);
+    --swarm-panel-strong: rgba(8, 16, 29, 0.92);
+    --swarm-border: rgba(255, 255, 255, 0.1);
+    --swarm-border-strong: rgba(197, 160, 89, 0.24);
+    --swarm-text: #f5f7fb;
+    --swarm-muted: #8da2c0;
+    --swarm-accent: #c5a059;
+    --swarm-accent-soft: #f0d8a1;
+    --swarm-success: #37d39a;
+    --swarm-danger: #f87171;
+  }
+
+  html {
+    background: #050913;
+  }
+
+  body {
+    min-height: 100vh;
+    color: var(--swarm-text);
+    font-family: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-feature-settings: "cv11", "ss01", "ss03";
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  #root {
+    min-height: 100vh;
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+  }
+
+  ::selection {
+    background: rgba(197, 160, 89, 0.28);
+    color: #fff8e7;
+  }
+}
+
+.app-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: linear-gradient(180deg, rgba(255, 255, 255, 0.3), transparent 85%);
+  pointer-events: none;
+}
+
+.glass-panel {
+  background: var(--swarm-panel);
+  border: 1px solid var(--swarm-border);
+  box-shadow:
+    0 24px 80px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(18px);
+}
+
+.glass-panel-strong {
+  background: var(--swarm-panel-strong);
+  border: 1px solid var(--swarm-border);
+  box-shadow:
+    0 24px 80px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
+}
+
+.metric-card {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.015)),
+    var(--swarm-panel-strong);
+  border: 1px solid var(--swarm-border);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.metric-card:hover {
+  border-color: var(--swarm-border-strong);
+  transform: translateY(-1px);
+  transition: all 160ms ease;
+}
+
+/* Custom scrollbar for Sophisticated Dark theme */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(5, 9, 19, 0.65);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(125, 142, 173, 0.35);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #c5a059;
+}
