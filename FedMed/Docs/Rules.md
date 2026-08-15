@@ -15,3 +15,4 @@
 2. **Type Safety**: Mandatory TypeScript interfaces across frontend components and Pydantic models across Python backend services.
 3. **No Mocks in Production Logic**: All cryptographic routines, metrics calculations (Dice, IoU, Loss), and state updates must run real mathematical functions.
 4. **Resilient Communication**: All gRPC / HTTP calls must support exponential backoff, timeout protection, and heartbeat failure detection.
+

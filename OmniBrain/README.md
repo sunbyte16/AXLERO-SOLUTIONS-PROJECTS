@@ -1,298 +1,215 @@
-# OmniBrain
+# OmniBrain — Agentic Multi-Modal RAG Orchestrator
 
-<div align="center">
+<p align="left">
+  <img src="https://github.com/USERNAME/OmniBrain/actions/workflows/ci-cd.yml/badge.svg" alt="CI/CD Pipeline">
+  <img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python 3.10+">
+  <img src="https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react&logoColor=black" alt="React 18">
+  <img src="https://img.shields.io/badge/FastAPI-Backend-009688?style=flat-square&logo=fastapi&logoColor=white" alt="FastAPI">
+  <img src="https://img.shields.io/badge/LangGraph-Orchestration-1C3C3C?style=flat-square" alt="LangGraph">
+  <img src="https://img.shields.io/badge/GPT--4o-OpenAI-412991?style=flat-square&logo=openai&logoColor=white" alt="GPT-4o">
+  <img src="https://img.shields.io/badge/Vite-Build-646CFF?style=flat-square&logo=vite&logoColor=white" alt="Vite">
+  <img src="https://img.shields.io/badge/FAISS-Vector%20Store-4285F4?style=flat-square" alt="FAISS">
+  <img src="https://img.shields.io/badge/SQLite-Relational%20DB-003B57?style=flat-square&logo=sqlite&logoColor=white" alt="SQLite">
+</p>
 
-### Enterprise Agentic Multi-Modal RAG Platform
+<p align="left">
+  <img src="https://img.shields.io/badge/status-active%20development-yellow?style=flat-square" alt="Status: Active Development">
+  <img src="https://img.shields.io/badge/tests-passing%20(mocked)-brightgreen?style=flat-square" alt="Tests: Passing (Mocked)">
+  <img src="https://img.shields.io/badge/deployment-local%20only-lightgrey?style=flat-square" alt="Deployment: Local Only">
+  <img src="https://img.shields.io/badge/license-all%20rights%20reserved-red?style=flat-square" alt="License: All Rights Reserved">
+</p>
 
-Upload documents, index knowledge, chat with grounded AI, and receive citation-backed answers through a modern full-stack architecture.
+OmniBrain is a multi-agent AI system that understands financial documents containing text, tables, and charts. A LangGraph supervisor breaks complex queries into smaller tasks, assigns them to specialized agents, retrieves relevant information from multiple data sources, and combines the results into one accurate, cited answer.
 
-[![Frontend](https://img.shields.io/badge/Frontend-React%20%7C%20Vite-61DAFB?style=for-the-badge&logo=react&logoColor=black)](#tech-stack)
-[![Backend](https://img.shields.io/badge/Backend-FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)](#tech-stack)
-[![Database](https://img.shields.io/badge/Database-PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)](#tech-stack)
-[![Vector DB](https://img.shields.io/badge/Vector%20DB-Qdrant-DC382D?style=for-the-badge)](#architecture)
-[![Cache](https://img.shields.io/badge/Cache-Redis-D82C20?style=for-the-badge&logo=redis&logoColor=white)](#architecture)
-[![AI](https://img.shields.io/badge/AI-LangGraph%20%7C%20OpenAI-111827?style=for-the-badge)](#features)
-[![Docker Ready](https://img.shields.io/badge/Deployment-Docker%20Compose-2496ED?style=for-the-badge&logo=docker&logoColor=white)](#quick-start)
+**Example use case:** feed in a multi-page financial report PDF, then ask a question like *"What was the Q3 revenue growth in Asia Pacific, and does it match the chart in the presentation?"* — OmniBrain retrieves the relevant text, reads the actual chart image, cross-references structured data, and returns one answer with `[Source, Page]` citations for every claim.
 
-[![GitHub](https://img.shields.io/badge/GitHub-sunbyte16-181717?style=flat-square&logo=github)](https://github.com/sunbyte16)
-[![GitHub](https://img.shields.io/badge/GitHub-ymp7-181717?style=flat-square&logo=github)](https://github.com/ymp7)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Sunil%20Sharma-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/sunil-kumar-bb88bb31a/)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Monish%20Prasanna-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/yegireddy-monish-prasanna/)
-[![Portfolio](https://img.shields.io/badge/Portfolio-Visit%20Site-7C3AED?style=flat-square&logo=netlify&logoColor=white)](https://lively-dodol-cc397c.netlify.app)
-
-</div>
-
-## Overview
-
-**OmniBrain** is an enterprise-ready, agentic, multi-modal Retrieval-Augmented Generation platform built for teams that need secure document intelligence, grounded responses, and scalable AI workflows.
-
-It combines:
-
-- Document upload and indexing
-- Authentication and protected workspaces
-- Citation-aware AI responses
-- Agentic orchestration with LangGraph
-- PostgreSQL for application data
-- Qdrant for vector search
-- Redis for caching and fast distributed support
-
-## Features
-
-- **Secure Authentication**: user registration, login, JWT-based auth, RBAC, and rate limiting
-- **Document Intelligence**: upload PDFs, DOCX, TXT, CSV, XLSX, and image files with paragraph/sentence-aware semantic chunking
-- **Grounded Agentic Chat**: ask questions over uploaded content with strict `[Source: Document <id>, Page: <page>]` citation enforcement
-- **Modern UI**: responsive React dashboard powered by React Query, Zustand, and Tailwind CSS
-- **Scalable Backend**: async FastAPI services designed for containerized deployment
-- **Automated Test Isolation**: session-isolated Pytest suite using temporary dynamic SQLite engines
-- **Enterprise Foundation**: clean architecture, modular services, `.env.example` templates, and deployment-ready infrastructure
-
-## Tech Stack
-
-| Layer | Technologies |
-|---|---|
-| Frontend | React, TypeScript, Vite, Tailwind CSS, React Query, Zustand |
-| Backend | FastAPI, Python 3.12, SQLAlchemy, Pydantic |
-| AI / Orchestration | LangGraph, LangChain, OpenAI |
-| Data | PostgreSQL, Qdrant, Redis |
-| DevOps | Docker, Docker Compose |
+---
 
 ## Architecture
 
-### System Flow
-
-```mermaid
-flowchart LR
-    U[User] --> F[Frontend<br/>React + Vite]
-    F --> A[FastAPI API]
-    A --> AU[Auth Service]
-    A --> DS[Document Service]
-    A --> CS[Chat Service]
-    DS --> PG[(PostgreSQL)]
-    DS --> ST[(Storage)]
-    DS --> IDX[Indexing Service]
-    IDX --> RAG[RAG Pipeline]
-    RAG --> QD[(Qdrant)]
-    CS --> RAG
-    A --> RD[(Redis)]
-    RAG --> OAI[OpenAI]
+```
+User Query
+    │
+    ▼
+┌─────────────────────┐
+│  Supervisor Agent    │  LangGraph state machine — analyzes the query,
+│  (supervisor.py)     │  routes to the right specialized agent(s), loops
+└─────────┬────────────┘  until findings are sufficient (max 6 steps)
+          │
+    ┌─────┼─────┬─────────┐
+    ▼     ▼     ▼         
+┌───────┐ ┌───────┐ ┌────────┐
+│Search │ │ SQL   │ │ Vision │
+│Agent  │ │ Agent │ │ Agent  │
+└───┬───┘ └───┬───┘ └───┬────┘
+    │         │         │
+    ▼         ▼         ▼
+  FAISS    SQLite    GPT-4o Vision
+ (text)   (queries)  (page images)
+    │         │         │
+    └─────────┼─────────┘
+              ▼
+     Synthesis + Citation
+     Grounding Guard
+              │
+              ▼
+        Final Answer
+     (React frontend)
 ```
 
-### Module Diagram
+| Layer | Technology |
+|---|---|
+| Frontend | React + Vite, Tailwind, `motion/react` — served as static build via FastAPI |
+| API Gateway | FastAPI (`/upload`, `/query`) |
+| Orchestration | LangGraph (state machine, conditional routing, citation-grounded synthesis) |
+| Vector Store | FAISS (local, in-memory) |
+| Relational Store | SQLite |
+| LLM / VLM | OpenAI GPT-4o (text reasoning, Text-to-SQL, vision) |
+| PDF Ingestion | PyMuPDF (`fitz`) — text extraction + full-page rendering |
 
-```mermaid
-flowchart TD
-    APP[OmniBrain Platform]
-    APP --> FE[Frontend]
-    APP --> BE[Backend]
-    APP --> AI[AI Layer]
-    APP --> DATA[Data Layer]
+---
 
-    FE --> FE1[Login / Register]
-    FE --> FE2[Dashboard]
-    FE --> FE3[Documents]
-    FE --> FE4[Chat]
-    FE --> FE5[Analytics / Settings]
+## Key Design Decisions
 
-    BE --> BE1[Authentication API]
-    BE --> BE2[Document API]
-    BE --> BE3[Chat API]
-    BE --> BE4[Health API]
-    BE --> BE5[Service Layer]
+This project deliberately favors a **lean, dependency-minimal stack** over a "textbook enterprise" setup, on the principle that the value being demonstrated is the *agentic reasoning pipeline*, not infrastructure operations. Where the original design called for heavier tooling, a lighter substitute was used instead:
 
-    AI --> AI1[LangGraph Supervisor]
-    AI --> AI2[RAG Retrieval]
-    AI --> AI3[Citation-Aware Responses]
+| Originally considered | Used instead | Why |
+|---|---|---|
+| Qdrant (vector DB) | FAISS (in-memory) | No server to run/maintain for a single-user local system |
+| PostgreSQL | SQLite | Zero setup, file-based, sufficient for structured demo data |
+| Camelot / Tesseract (table & OCR extraction) | Full-page rendering to the Vision Agent | Vector-drawn charts and complex tables are notoriously brittle to parse structurally; rendering the whole page and letting GPT-4o read it visually is more robust and avoids a whole class of fragile dependencies |
+| NeMo Guardrails + Langfuse | A custom citation-enforcement check in the Supervisor's synthesis step | Full observability/guardrails tooling was out of scope for an MVP; a lightweight rule — every factual claim must carry a `[Source, Page]` citation, or the response is rejected — captures the core hallucination-prevention goal directly |
 
-    DATA --> D1[PostgreSQL]
-    DATA --> D2[Qdrant]
-    DATA --> D3[Redis]
-    DATA --> D4[Object Storage]
+These substitutions are documented in detail, along with the full build history, in [`docs/PROGRESS_LOG.md`](docs/PROGRESS_LOG.md) and [`QA_REPORT.md`](QA_REPORT.md).
+
+---
+
+## Project Structure
+
+```
+OmniBrain/
+├── README.md
+├── QA_REPORT.md              # Test coverage, known gaps, scope rationale
+├── requirements.txt
+├── Dockerfile                 # Multi-stage: builds React, then Python runtime
+├── start.sh                   # DB init + uvicorn entrypoint
+├── .env.example                # Required environment variables (no real values)
+│
+├── docs/                      # Architecture & design documentation
+│   ├── OmniBrain_Architecture.md
+│   ├── OmniBrain_Memory_and_State_Management.md
+│   ├── OmniBrain_Skills_and_Tooling.md
+│   ├── Supervisor_Agent.md
+│   ├── Search_Agent.md
+│   ├── SQL_Agent.md
+│   ├── Vision_Agent.md
+│   └── PROGRESS_LOG.md        # Chronological build/status log
+│
+├── backend/                   # Python source
+│   ├── api.py                 # FastAPI app: /upload, /query, static file serving
+│   ├── supervisor.py           # LangGraph state machine & routing logic
+│   ├── agents.py               # Search / SQL / Vision agent implementations
+│   ├── ingestion.py             # PDF parsing, chunking, embedding, page rendering
+│   ├── init_db.py               # SQLite schema + progress-ledger seed data
+│   └── project_status_seed.sql
+│
+├── frontend/                  # React + Vite single-page app
+│   └── src/
+│       ├── App.tsx
+│       └── components/
+│           ├── IngestionPanel.tsx
+│           ├── QueryPanel.tsx
+│           └── FindingsDisplay.tsx
+│
+└── tests/
+    ├── test_e2e.py             # Playwright UI + functional backend tests
+    └── generate_test_pdf.py    # Generates a sample multi-page financial PDF
 ```
 
-### Request Lifecycle
+---
 
-```mermaid
-sequenceDiagram
-    participant User
-    participant UI as Frontend
-    participant API as FastAPI
-    participant DB as PostgreSQL
-    participant VDB as Qdrant
-    participant LLM as OpenAI
-
-    User->>UI: Upload document / ask question
-    UI->>API: Authenticated request
-    API->>DB: Save metadata / session data
-    API->>VDB: Retrieve relevant context
-    API->>LLM: Generate grounded answer
-    LLM-->>API: Response with reasoning context
-    API-->>UI: Citation-backed answer
-    UI-->>User: Render final response
-```
-
-## Quick Start
+## Setup
 
 ### Prerequisites
+- Python 3.10+
+- Node.js 18+ (for the frontend build)
+- An OpenAI API key with available quota
 
-- Docker and Docker Compose
-- Python 3.12+
-- Node.js 18+
-- OpenAI API key for embeddings and chat
-
-### 1. Configure Environment
+### 1. Clone and configure environment
 
 ```bash
+git clone <this-repo>
+cd OmniBrain
 cp .env.example .env
+# Edit .env and set OPENAI_API_KEY — never commit this file
 ```
 
-Update your `.env` with required values such as:
-
-- `OPENAI_API_KEY`
-- `JWT_SECRET_KEY`
-- `APP_SECRET_KEY`
-
-### 2. Start the Full Stack
+### 2. Backend setup
 
 ```bash
-docker compose up --build
-```
-
-### 3. Access the Services
-
-| Service | URL |
-|---|---|
-| Frontend | `http://localhost:5173` |
-| Backend API | `http://localhost:8000` |
-| API Docs | `http://localhost:8000/docs` |
-| Qdrant | `http://localhost:6333` |
-
-### 4. Use the Platform
-
-1. Open the frontend
-2. Register a new account or seed an admin user
-3. Upload documents
-4. Wait until document status becomes `indexed`
-5. Start chatting with your knowledge base
-
-## Local Development
-
-### Infrastructure Only
-
-```bash
-docker compose up postgres redis qdrant -d
-```
-
-### Backend
-
-```bash
-cd backend
 python -m venv .venv
-.venv\Scripts\activate
+source .venv/bin/activate        # Windows: .\.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
-uvicorn app.main:app --reload --port 8000
+python backend/init_db.py        # Initializes SQLite schema + progress ledger
 ```
 
-### Running Tests
-
-OmniBrain features a session-isolated test suite using temporary SQLite databases to prevent state accumulation:
-
-```bash
-python -m pytest backend/tests/
-```
-
-### Frontend
+### 3. Frontend setup
 
 ```bash
 cd frontend
 npm install
-npm run dev
+npm run build                    # Produces frontend/dist, served by FastAPI
+cd ..
 ```
 
-## Demo Users
-
-### Default Admin
-
-- Email: `admin@omnibrain.io`
-- Password: `Admin123!`
-
-### Seed Admin or Bulk Users
+### 4. Run
 
 ```bash
-cd backend
-python scripts/seed_admin.py
-python scripts/seed_admin.py --users-count 1000
+export OPENAI_API_KEY="sk-..."   # Windows: $env:OPENAI_API_KEY="sk-..."
+uvicorn backend.api:app --host 0.0.0.0 --port 8080
 ```
 
-This is useful for testing registration and login capacity at scale.
+Visit `http://localhost:8080` — FastAPI serves both the API and the built React frontend on a single port.
 
-## Core API Highlights
+### 5. Try it out
+1. Upload a PDF via the Ingestion panel (or use `tests/generate_test_pdf.py` to create a sample).
+2. Ask a question in the Query panel that spans multiple data types, e.g. *"What was the revenue growth shown in the chart, and how does it compare to the database figures?"*
+3. The response includes `[Source: filename, Page: N]` citations for every factual claim.
 
-| Method | Endpoint | Description |
-|---|---|---|
-| `GET` | `/api/health` | Health status for core services |
-| `POST` | `/api/auth/register` | Register a new user |
-| `POST` | `/api/auth/login` | Login and receive JWT tokens |
-| `GET` | `/api/auth/me` | Fetch current authenticated user |
-| `POST` | `/api/documents` | Upload a document |
-| `GET` | `/api/documents` | List uploaded documents |
-| `POST` | `/api/chat` | Create a new chat |
-| `POST` | `/api/chat/{id}/messages` | Send a message in a chat |
+---
 
-## Project Structure
+## CI/CD Pipeline
 
-```text
-OmniBrain/
-├── backend/          FastAPI application and business logic
-├── frontend/         React UI and dashboard
-├── agents/           LangGraph agent orchestration
-├── rag/              Retrieval-Augmented Generation pipeline
-├── ingestion/        Document parsing and chunking
-├── embeddings/       Embedding generation services
-├── vision/           Vision workflows
-├── storage/          Uploaded document storage
-├── Docs/             Product and architecture documentation
-├── docker-compose.yml
-└── README.md
+OmniBrain uses GitHub Actions for continuous integration and deployment (`.github/workflows/ci-cd.yml`):
+- **CI (Test)**: Runs on every push and pull request to the `main` branch. It sets up the environment, builds the React frontend, initializes the SQLite database, and runs the Playwright End-to-End tests (which mock the OpenAI API to run offline).
+- **CD (Deploy)**: If the CI tests pass on a push to `main`, the CD job automatically deploys the latest version to Google Cloud Run using keyless authentication (Workload Identity Federation).
+
+## Testing
+
+```bash
+python tests/test_e2e.py
 ```
 
-## Why OmniBrain
+This runs Playwright-driven UI tests (rendering, error states) plus a backend functional test verifying multi-agent state accumulation and citation enforcement. See [`QA_REPORT.md`](QA_REPORT.md) for exactly what is and isn't covered — notably, full end-to-end verification with a live (non-mocked) GPT-4o call is currently pending available OpenAI quota.
 
-- **Grounded Answers** instead of generic LLM output
-- **Citations by Design** for trust and auditability
-- **Multi-Modal Foundation** ready for text, tables, and images
-- **Scalable Services** with async APIs and container support
-- **Clean Developer Experience** with separated frontend, backend, AI, and infra layers
+---
 
-## Roadmap
+## Known Limitations
 
-- Phase 1: Project Foundation
-- Phase 2: Authentication
-- Phase 3: Document Management
-- Phase 4-5: Processing and Embeddings
-- Phase 6-7: Agentic RAG
-- Phase 8+: Vision, analytics, advanced workflows, and enterprise extensions
+- **Local storage only.** SQLite and FAISS live on local disk — this is intentional for a single-user demo, but means state does not persist across container restarts if deployed, and does not scale across multiple instances without migrating to managed storage (Cloud SQL, a hosted vector DB).
+- **No rate limiting.** The `/query` and `/upload` endpoints have no throttling; exposing this publicly without additional middleware risks unexpected OpenAI usage costs.
+- **Deployment is deferred.** A `Dockerfile` and deploy script exist and were validated for structure, but Cloud Run deployment itself is currently out of scope by design — see `QA_REPORT.md`.
 
-For the full roadmap, see `Documents/Phases.md`.
+## Roadmap / Next Steps
 
-## Connect With Us
+- Verify real (non-mocked) GPT-4o reasoning quality once OpenAI quota is available.
+- Migrate to managed storage (Cloud SQL + a hosted vector DB) if moving beyond single-instance local use.
+- Add basic rate limiting before any public deployment.
+- Extend the Progress Ledger pattern to Projects 2 and 3 of this portfolio series.
 
-### Sunil Sharma
-- GitHub: [@sunbyte16](https://github.com/sunbyte16)
-- LinkedIn: [Sunil Sharma](https://www.linkedin.com/in/sunil-kumar-bb88bb31a/)
-- Portfolio: [lively-dodol-cc397c.netlify.app](https://lively-dodol-cc397c.netlify.app)
-
-### Monish Prasanna
-- GitHub: [@ymp7](https://github.com/ymp7)
-- LinkedIn: [Monish Prasanna](https://www.linkedin.com/in/yegireddy-monish-prasanna/)
-
-## Creators
-
-<div align="center">
-
-### Crafted By ♥  𝕊𝕦𝕟𝕚𝕝 𝕊𝕙𝕒𝕣𝕞𝕒 & 𝕄𝕠𝕟𝕚𝕤𝕙 ℙ𝕣𝕒𝕤𝕒𝕟𝕟𝕒
-
-</div>
+---
 
 ## License
 
-Proprietary - AXLERO SOLUTIONS
+This is a personal portfolio project. No license is currently specified — all rights reserved unless otherwise stated. 
+

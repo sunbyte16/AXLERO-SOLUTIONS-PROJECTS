@@ -43,3 +43,4 @@
 - **Performance**: API response latency $< 200\text{ms}$; WebSockets telemetry broadcast interval $< 1000\text{ms}$.
 - **Security**: Mandatory TLS 1.3 encryption in transit, AES-256 at rest; zero plain-text weight exchange over unencrypted channels.
 - **Availability**: High-availability coordinator architecture with automatic recovery.
+

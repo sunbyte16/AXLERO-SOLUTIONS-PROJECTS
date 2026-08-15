@@ -55,3 +55,4 @@
 - **Homomorphic Encryption**: TenSEAL wrapper using CKKS vector scheme (`poly_modulus_degree=8192`, `coeff_mod_bit_sizes=[60, 40, 40, 60]`).
 - **Differential Privacy**: DP-SGD with noise multiplier $\sigma \in [0.5, 2.0]$, clipping threshold $C = 1.0$, privacy budget limit $\epsilon \le 10.0, \delta = 10^{-5}$.
 - **Node Identity & Auth**: X.509 Certificates, mTLS authentication, JWT Tokens for Admin API access.
+

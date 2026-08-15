@@ -21,3 +21,4 @@
 - **Header**: Top status bar displaying real-time platform connectivity, active FL round, active nodes count, system security lock badge, and theme switch.
 - **Data Density**: High-density cards with subtle borders (`border-slate-800`), clean typography hierarchy, crisp Recharts visualization charts, and interactive controls.
 - **Canvas Rendering**: HTML5 Canvas rendering 3D Medical MRI slices with dual-layer compositing (Gray-scale anatomical slice + Semi-transparent colored U-Net segmentation mask).
+

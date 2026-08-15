@@ -9,12 +9,12 @@
   ![TypeScript](https://img.shields.io/badge/TypeScript-5.8-blue)
   ![Status](https://img.shields.io/badge/Status-Active-success)
 
-  [![Features](https://img.shields.io/badge/Features-3D%20Simulation%20%7C%20Real--time%20Telemetry%20%7C%20Training%20Analytics-orange)](https://github.com/sunbyte16)
-  [![MAPO](https://img.shields.io/badge/Algorithm-MAPPO-purple)](https://github.com/sunbyte16)
+  [![Features](https://img.shields.io/badge/Features-3D%20Simulation%20%7C%20Real--time%20Telemetry%20%7C%20Training%20Analytics-orange)](https://github.com/YMP7)
+  [![MAPO](https://img.shields.io/badge/Algorithm-MAPPO-purple)](https://github.com/YMP7)
 
   <p>
-    <a href="https://github.com/sunbyte16" target="_blank">
-      <img src="https://img.shields.io/badge/GitHub-sunbyte16-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
+    <a href="https://github.com/YMP7" target="_blank">
+      <img src="https://img.shields.io/badge/GitHub-YMP7-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
     </a>
     <a href="https://www.linkedin.com/in/sunil-kumar-bb88bb31a/" target="_blank">
       <img src="https://img.shields.io/badge/LinkedIn-Sunil%20Kumar-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
@@ -102,234 +102,13 @@ SwarmRL is an enterprise-grade **Multi-Agent Deep Reinforcement Learning (MAPPO)
 
 ```bash
 # Clone the repository
-git clone https://github.com/sunbyte16/swarmrl-multi-model.git
-cd swarmrl-multi-model
-
-# Install dependencies
-npm install
-
-# Configure environment variables
-cp .env.example .env
-# Edit .env and add your GEMINI_API_KEY
-```
-
-### Running the Application
-
-```bash
-# Development mode
-npm run dev
-
-# Production build
-npm run build
-npm start
-
-# Preview production build
-npm run preview
-```
-
-The application will be available at `http://localhost:3000`
-
----
-
-## 🛠️ Installation
-
-### Step-by-Step Setup
-
-1. **Install Dependencies**
-   ```bash
-   npm install
-   ```
-
-2. **Environment Configuration**
-   - Copy `.env.example` to `.env`
-   - Set your `GEMINI_API_KEY` in the `.env` file
-   - Configure other environment variables as needed
-
-3. **Database Setup**
-   - The application uses SQLite (via better-sqlite3)
-   - Database is automatically created on first run
-
-4. **Build the Project**
-   ```bash
-   npm run build
-   ```
-
-5. **Start the Server**
-   ```bash
-   npm start
-   ```
-
----
-
-## 💻 Usage
-
-### Development Workflow
-
-```bash
-# Run in development mode with hot reload
-npm run dev
-
-# Type checking
-npm run lint
-
-# Clean build artifacts
-npm run clean
-```
-
-### API Endpoints
-
-- `GET /` - Main application
-- `WS /telemetry` - WebSocket endpoint for real-time telemetry
-- `POST /api/auth` - Authentication endpoints
-- `GET /api/agents` - Agent management
-- `GET /api/simulation` - Simulation control
-
-### Environment Variables
-
-| Variable | Description | Required |
-|----------|-------------|----------|
-| `GEMINI_API_KEY` | Google Gemini API key for AI functionality | Yes |
-| `PORT` | Server port (default: 3000) | No |
-| `NODE_ENV` | Environment (development/production) | No |
-
----
-
-## 🏗️ Architecture
-
-### System Components
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│                     Frontend (React)                        │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐      │
-│  │  Dashboard   │  │  Simulation  │  │  Analytics   │      │
-│  └──────────────┘  └──────────────┘  └──────────────┘      │
-└─────────────────────────────────────────────────────────────┘
-                            │
-                    WebSocket │ HTTP
-                            ▼
-┌─────────────────────────────────────────────────────────────┐
-│                  Backend (Node.js/Express)                  │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐      │
-│  │   API Layer  │  │  Simulation  │  │  Training    │      │
-│  └──────────────┘  └──────────────┘  └──────────────┘      │
-└─────────────────────────────────────────────────────────────┘
-                            │
-                    ▼       ▼       ▼
-              ┌─────────┐ ┌─────────┐ ┌─────────┐
-              │ SQLite  │ │ Gemini  │ │  MAPPO  │
-              │   DB    │ │   API   │ │ Engine  │
-              └─────────┘ └─────────┘ └─────────┘
-```
-
-### Key Modules
-
-- **`src/components/`** - React UI components
-- **`src/simulation/`** - 3D simulation engine
-- **`src/rl/`** - Reinforcement learning algorithms
-- **`src/server/`** - Backend API and WebSocket handlers
-- **`src/stores/`** - State management (Zustand)
-- **`src/lib/`** - Utility functions and helpers
-
----
-
-## 🧪 Tech Stack
-
-### Frontend
-- **React 19** - UI framework
-- **Three.js** - 3D graphics
-- **React Three Fiber** - React renderer for Three.js
-- **React Three Drei** - Three.js helpers for React
-- **Tailwind CSS** - Styling
-- **Recharts** - Data visualization
-- **D3.js** - Advanced data visualization
-- **Lucide React** - Icon library
-- **Motion** - Animation library
-- **Zustand** - State management
-- **React Router** - Navigation
-
-### Backend
-- **Node.js** - Runtime environment
-- **Express** - Web framework
-- **WebSocket (ws)** - Real-time communication
-- **SQLite (better-sqlite3)** - Database
-- **JWT** - Authentication
-- **Bcrypt** - Password hashing
-- **Google GenAI SDK** - AI integration
-
-### Development Tools
-- **TypeScript** - Type safety
-- **Vite** - Build tool
-- **ESBuild** - Bundling
-- **TSX** - TypeScript execution
-
----
-
-## 📊 Project Structure
-
-```
-swarmrl-multi-model/
-├── assets/              # Static assets
-├── data/                # Data files
-├── dist/                # Build output
-├── docs/                # Documentation
-├── src/
-│   ├── components/      # React components
-│   ├── lib/            # Utility libraries
-│   ├── rl/             # Reinforcement learning
-│   ├── server/         # Backend server
-│   ├── simulation/     # 3D simulation
-│   ├── stores/         # State management
-│   ├── types/          # TypeScript types
-│   ├── App.tsx         # Main app component
-│   ├── DashboardApp.tsx
-│   ├── main.tsx        # Entry point
-│   └── index.css       # Global styles
-├── .env.example        # Environment template
-├── .gitignore
-├── package.json
-├── tsconfig.json
-├── vite.config.ts
-├── server.ts           # Server entry point
-└── README.md
-```
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-### Development Guidelines
-
-- Follow the existing code style
-- Add tests for new features
-- Update documentation as needed
-- Ensure all tests pass before submitting
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
----
-
-## 👨‍💻 Author
-
-<div align="center">
+git clone https://github.com/YMP7/AXLERO-SOLUTIONS-PROJECTS"center">
 
 **Created By 𝕊𝕦𝕟𝕚𝕝 𝕊𝕙𝕒𝕣𝕞𝕒 **
 
 <p>
-  <a href="https://github.com/sunbyte16" target="_blank">
-    <img src="https://img.shields.io/badge/GitHub-sunbyte16-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
+  <a href="https://github.com/YMP7" target="_blank">
+    <img src="https://img.shields.io/badge/GitHub-YMP7-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
   </a>
   <a href="https://www.linkedin.com/in/sunil-kumar-bb88bb31a/" target="_blank">
     <img src="https://img.shields.io/badge/LinkedIn-Sunil%20Kumar-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
@@ -351,6 +130,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 **⭐ If you find this project helpful, please consider giving it a star! ⭐**
 
-Crafted with ☕ & by Sunil Sharma
+Crafted with ☕ & by Axlero Engineering Team
 
 </div>
+

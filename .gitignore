@@ -1,12 +1,53 @@
 # Dependencies
+node_modules/
 **/node_modules/
+.venv/
+**/.venv/
 
-# Build output
-**/dist/
-
-# Environment files
+# Environment Variables & Secrets
+.env
 **/.env
+.env.local
 **/.env.local
 
-# Database
+# Build Outputs
+dist/
+**/dist/
+build/
+**/build/
+.next/
+**/.next/
+
+# Databases & Vector Stores
+*.db
 **/*.db
+*.db-shm
+**/*.db-shm
+*.db-wal
+**/*.db-wal
+faiss_index/
+**/faiss_index/
+storage/
+**/storage/
+
+# Temporary & Extracted Data
+temp_uploads/
+**/temp_uploads/
+extracted_images/
+**/extracted_images/
+test_data/
+**/test_data/
+
+# Python / Pytest Caches
+__pycache__/
+**/__pycache__/
+*.pyc
+**/*.pyc
+.pytest_cache/
+**/.pytest_cache/
+
+# IDE & OS files
+.DS_Store
+Thumbs.db
+.playwright-mcp/
+**/.playwright-mcp/

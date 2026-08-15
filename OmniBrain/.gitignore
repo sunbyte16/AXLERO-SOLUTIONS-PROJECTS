@@ -1,37 +1,13 @@
-# Environment and Secrets
 .env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
 .venv/
-venv/
-env/
-ENV/
-
-# Testing and Coverage
-.pytest_cache/
-.coverage
-htmlcov/
-
-# Database and Local Data
-*.db
-*.sqlite
-*.sqlite3
+__pycache__/
 omnibrain.db
-backend/omnibrain.db
-
-# Node / Frontend
+faiss_index/
+extracted_images/
 node_modules/
-dist/
-build/
-.next/
+frontend/dist/
+test_data/
+*.pyc
+.pytest_cache/
 
-# Logs and Debug
-*.log
-debug-register-500-error.md
+.playwright-mcp/

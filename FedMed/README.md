@@ -17,10 +17,10 @@
 </div>
 
 <div align="center">
-  <h3>👨‍💻 Crafted By <a href="https://github.com/sunbyte16" target="_blank">𝕊𝕦𝕟𝕚𝕝 𝕊𝕙𝕒𝕣𝕞𝕒</a> ❤️</h3>
+  <h3>👨‍💻 Crafted By <a href="https://github.com/YMP7" target="_blank">𝕊𝕦𝕟𝕚𝕝 𝕊𝕙𝕒𝕣𝕞𝕒</a> ❤️</h3>
   
-  <a href="https://github.com/sunbyte16" target="_blank">
-    <img src="https://img.shields.io/badge/GitHub-sunbyte16-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
+  <a href="https://github.com/YMP7" target="_blank">
+    <img src="https://img.shields.io/badge/GitHub-YMP7-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
   </a>
   <a href="https://www.linkedin.com/in/sunil-kumar-bb88bb31a/" target="_blank">
     <img src="https://img.shields.io/badge/LinkedIn-Sunil%20Kumar-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn">
@@ -264,10 +264,10 @@ Contributions are welcome! Please follow these steps:
 
 ## �‍💻 Author
 
-**Sunil Sharma**
+**Axlero Engineering Team**
 
 - 💼 **Full Stack Developer** | AI/ML Enthusiast
-- 🔗 [GitHub](https://github.com/sunbyte16) | [LinkedIn](https://www.linkedin.com/in/sunil-kumar-bb88bb31a/) | [Portfolio](https://lively-dodol-cc397c.netlify.app)
+- 🔗 [GitHub](https://github.com/YMP7) | [LinkedIn](https://www.linkedin.com/in/sunil-kumar-bb88bb31a/) | [Portfolio](https://lively-dodol-cc397c.netlify.app)
 - 🌟 Passionate about building secure, scalable healthcare AI solutions
 
 ---
@@ -291,13 +291,13 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 For questions, issues, or contributions:
 - Open an issue on GitHub
-- Contact: [sunbyte16](https://github.com/sunbyte16)
+- Contact: [YMP7](https://github.com/YMP7)
 
 ---
 
 <div align="center">
   <p>
-    <strong>Crafted by <a href="https://github.com/sunbyte16" target="_blank"> ❤️ 𝕊𝕦𝕟𝕚𝕝 𝕊𝕙𝕒𝕣𝕞𝕒</a> for secure, privacy-preserving healthcare AI</strong>
+    <strong>Crafted by <a href="https://github.com/YMP7" target="_blank"> ❤️ 𝕊𝕦𝕟𝕚𝕝 𝕊𝕙𝕒𝕣𝕞𝕒</a> for secure, privacy-preserving healthcare AI</strong>
   </p>
   <p>
     <em>FedMed AI Engine - Empowering collaborative medical research while protecting patient privacy</em>
@@ -307,8 +307,8 @@ For questions, issues, or contributions:
   </p>
   
   <div align="center">
-    <a href="https://github.com/sunbyte16" target="_blank">
-      <img src="https://img.shields.io/badge/GitHub-sunbyte16-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
+    <a href="https://github.com/YMP7" target="_blank">
+      <img src="https://img.shields.io/badge/GitHub-YMP7-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
     </a>
     <a href="https://www.linkedin.com/in/sunil-kumar-bb88bb31a/" target="_blank">
       <img src="https://img.shields.io/badge/LinkedIn-Sunil%20Kumar-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn">
@@ -318,3 +318,4 @@ For questions, issues, or contributions:
     </a>
   </div>
 </div>
+
