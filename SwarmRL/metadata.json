@@ -1,0 +1,6 @@
+{
+  "name": "SwarmRL – Multi-Agent DRL Simulator",
+  "description": "Enterprise-grade Multi-Agent Deep Reinforcement Learning (MAPPO) platform with continuous 3D disaster-response simulation, real-time telemetry streaming, and training analytics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

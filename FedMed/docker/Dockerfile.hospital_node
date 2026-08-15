@@ -1,0 +1,16 @@
+FROM python:3.12-slim
+
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    cmake \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY hospital_nodes /app/hospital_nodes
+COPY encryption /app/encryption
+COPY models /app/models
+
+RUN pip install --no-cache-dir flwr tenseal numpy torch monai
+
+CMD ["python", "hospital_nodes/client.py"]

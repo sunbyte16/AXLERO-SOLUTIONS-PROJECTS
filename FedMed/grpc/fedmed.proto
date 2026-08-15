@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+package fedmed;
+
+// Hospital Node Authentication & Status
+message NodeCredentials {
+  string hospital_id = 1;
+  string api_token = 2;
+  string mtls_fingerprint = 3;
+}
+
+message HeartbeatRequest {
+  NodeCredentials credentials = 1;
+  float gpu_utilization = 2;
+  float vram_used_gb = 3;
+  float cpu_utilization = 4;
+  int32 dataset_samples = 5;
+  string status = 6; // "ONLINE", "TRAINING", "IDLE", "OFFLINE"
+}
+
+message HeartbeatResponse {
+  bool acknowledged = 1;
+  int64 server_timestamp = 2;
+  string current_round_status = 3;
+}
+
+// Weight Exchange with Homomorphic Encryption & DP
+message EncryptedWeightTensor {
+  string layer_name = 1;
+  bytes ciphertext_bytes = 2; // TenSEAL CKKS encrypted payload
+  int32 tensor_shape_dim0 = 3;
+  int32 tensor_shape_dim1 = 4;
+}
+
+message ModelWeightUpdate {
+  string hospital_id = 1;
+  int32 round_id = 2;
+  repeated EncryptedWeightTensor encrypted_weights = 3;
+  float local_loss = 4;
+  float local_dice_score = 5;
+  float local_iou = 6;
+  int32 num_samples = 7;
+  float dp_epsilon_spent = 8;
+  bytes digital_signature = 9;
+}
+
+message UpdateResponse {
+  bool accepted = 1;
+  string message = 2;
+  float updated_global_dice_score = 3;
+}
+
+service FedMedService {
+  rpc SendHeartbeat (HeartbeatRequest) returns (HeartbeatResponse);
+  rpc SubmitWeightUpdate (ModelWeightUpdate) returns (UpdateResponse);
+}
