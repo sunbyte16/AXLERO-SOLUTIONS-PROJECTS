@@ -192,7 +192,6 @@ SwarmRL/
 ### Sunil Sharma
 - GitHub: [@sunbyte16](https://github.com/sunbyte16)
 - LinkedIn: [Sunil Sharma](https://www.linkedin.com/in/sunil-kumar-bb88bb31a/)
-- Portfolio: [lively-dodol-cc397c.netlify.app](https://lively-dodol-cc397c.netlify.app)
 
 ### Monish Prasanna
 - GitHub: [@ymp7](https://github.com/ymp7)
