@@ -22,12 +22,8 @@
   <a href="https://github.com/YMP7" target="_blank">
     <img src="https://img.shields.io/badge/GitHub-YMP7-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
   </a>
-  <a href="https://www.linkedin.com/in/sunil-kumar-bb88bb31a/" target="_blank">
-    <img src="https://img.shields.io/badge/LinkedIn-Sunil%20Kumar-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn">
-  </a>
-  <a href="https://lively-dodol-cc397c.netlify.app" target="_blank">
-    <img src="https://img.shields.io/badge/Portfolio-View%20Site-14B8A6?style=for-the-badge&logo=netlify&logoColor=white" alt="Portfolio">
-  </a>
+  
+  
 </div>
 
 ---
@@ -267,7 +263,7 @@ Contributions are welcome! Please follow these steps:
 **Axlero Engineering Team**
 
 - 💼 **Full Stack Developer** | AI/ML Enthusiast
-- 🔗 [GitHub](https://github.com/YMP7) | [LinkedIn](https://www.linkedin.com/in/sunil-kumar-bb88bb31a/) | [Portfolio](https://lively-dodol-cc397c.netlify.app)
+- 🔗 [GitHub](https://github.com/YMP7) 
 - 🌟 Passionate about building secure, scalable healthcare AI solutions
 
 ---
@@ -297,7 +293,7 @@ For questions, issues, or contributions:
 
 <div align="center">
   <p>
-    <strong>Crafted by <a href="https://github.com/YMP7" target="_blank"> ❤️ 𝕊𝕦𝕟𝕚𝕝 𝕊𝕙𝕒𝕣𝕞𝕒</a> for secure, privacy-preserving healthcare AI</strong>
+    
   </p>
   <p>
     <em>FedMed AI Engine - Empowering collaborative medical research while protecting patient privacy</em>
@@ -310,12 +306,8 @@ For questions, issues, or contributions:
     <a href="https://github.com/YMP7" target="_blank">
       <img src="https://img.shields.io/badge/GitHub-YMP7-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
     </a>
-    <a href="https://www.linkedin.com/in/sunil-kumar-bb88bb31a/" target="_blank">
-      <img src="https://img.shields.io/badge/LinkedIn-Sunil%20Kumar-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn">
-    </a>
-    <a href="https://lively-dodol-cc397c.netlify.app" target="_blank">
-      <img src="https://img.shields.io/badge/Portfolio-View%20Site-14B8A6?style=for-the-badge&logo=netlify&logoColor=white" alt="Portfolio">
-    </a>
+    
+    
   </div>
 </div>
 
