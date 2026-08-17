@@ -660,13 +660,11 @@ Agent A Observation
         ↓
      Action A
 
-
 Agent B Observation
         ↓
      Actor B
         ↓
      Action B
-
 
 Agent N Observation
         ↓
@@ -707,7 +705,6 @@ Actor Network
 ├── Feature Extraction
 ├── Hidden Layers
 └── Action Head
-
 
 Critic Network
 │
@@ -1181,7 +1178,6 @@ API Service
 React Query
     ↓
 Application State
-
 
 WebSocket
     ↓

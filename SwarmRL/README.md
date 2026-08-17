@@ -16,12 +16,8 @@
     <a href="https://github.com/YMP7" target="_blank">
       <img src="https://img.shields.io/badge/GitHub-YMP7-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
     </a>
-    <a href="https://www.linkedin.com/in/sunil-kumar-bb88bb31a/" target="_blank">
-      <img src="https://img.shields.io/badge/LinkedIn-Sunil%20Kumar-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
-    </a>
-    <a href="https://lively-dodol-cc397c.netlify.app" target="_blank">
-      <img src="https://img.shields.io/badge/Portfolio-View%20Online-00C853?style=for-the-badge&logo=netlify&logoColor=white" alt="Portfolio" />
-    </a>
+    
+    
   </p>
 
   <p>
@@ -110,12 +106,8 @@ git clone https://github.com/YMP7/AXLERO-SOLUTIONS-PROJECTS"center">
   <a href="https://github.com/YMP7" target="_blank">
     <img src="https://img.shields.io/badge/GitHub-YMP7-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
   </a>
-  <a href="https://www.linkedin.com/in/sunil-kumar-bb88bb31a/" target="_blank">
-    <img src="https://img.shields.io/badge/LinkedIn-Sunil%20Kumar-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
-  </a>
-  <a href="https://lively-dodol-cc397c.netlify.app" target="_blank">
-    <img src="https://img.shields.io/badge/Portfolio-View%20Online-00C853?style=for-the-badge&logo=netlify&logoColor=white" alt="Portfolio" />
-  </a>
+  
+  
 </p>
 
 <p>
@@ -129,8 +121,6 @@ git clone https://github.com/YMP7/AXLERO-SOLUTIONS-PROJECTS"center">
 <div align="center">
 
 **⭐ If you find this project helpful, please consider giving it a star! ⭐**
-
-Crafted with ☕ & by Axlero Engineering Team
 
 </div>
 
