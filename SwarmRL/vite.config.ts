@@ -1,7 +1,7 @@
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
-import {defineConfig} from 'vite';
+import { defineConfig } from 'vite';
 
 export default defineConfig(() => {
   const hmrDisabled = process.env.DISABLE_HMR === 'true';
@@ -16,8 +16,7 @@ export default defineConfig(() => {
       hmr: hmrDisabled
         ? false
         : {
-            clientPort: Number(process.env.PORT) || 3002,
-            port: Number(process.env.PORT) || 3002,
+            port: Number(process.env.HMR_PORT) || 24679,
           },
       watch: hmrDisabled ? null : {},
       fs: {
