@@ -1,4 +1,4 @@
-##Fedmed
+FEDMED
 <div align="center">
 
 ### Privacy-Preserving Medical Federated Learning Platform
