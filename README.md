@@ -15,7 +15,12 @@
 
 ## 📌 Executive Summary
 
-This repository houses the core enterprise AI and distributed autonomous systems engineered by **Axlero Solutions**. It consolidates three advanced architectures spanning **Multi-Agent RAG Orchestration**, **Privacy-Preserving Healthcare Federated Learning**, and **Multi-Agent Deep Reinforcement Learning (MAPPO)** for continuous 3D drone swarm disaster response missions.
+This repository contains advanced AI and distributed systems developed by Axlero Solutions, covering three major architectures:
+OmniBrain – Multi-Agent RAG system for intelligent document analysis.
+FedMed – Privacy-preserving Federated Learning for healthcare and medical imaging.
+Drone Swarm AI – Multi-Agent Deep Reinforcement Learning (MAPPO) for autonomous 3D drone-based disaster response.
+
+Focus: Agentic AI • Federated Learning • Reinforcement Learning • Multi-Agent Systems • Healthcare AI • Autonomous Drones
 
 Each platform is production-hardened, self-contained, and accompanied by comprehensive documentation, automated test suites, and interactive client dashboards.
 
