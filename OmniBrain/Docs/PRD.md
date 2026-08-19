@@ -6,7 +6,7 @@ Version: 1.0
 
 Status: Planning
 
-Crafted By: Sunil Kumar & Monish Prasanna
+Crafted By: Sunil Kumar
 
 ---
 

@@ -1,14 +1,8 @@
+"""Pytest configuration and fixtures for backend tests."""
+
 import os
-import sys
 import tempfile
 from pathlib import Path
-
-# Ensure project root and backend dir are in sys.path regardless of invocation directory
-_backend_dir = Path(__file__).resolve().parent.parent
-_project_root = _backend_dir.parent
-for _p in [str(_project_root), str(_backend_dir)]:
-    if _p not in sys.path:
-        sys.path.insert(0, _p)
 
 # Create a fresh, isolated temporary SQLite database file for the test session
 _temp_db_fd, _temp_db_path = tempfile.mkstemp(prefix="omnibrain_test_", suffix=".db")

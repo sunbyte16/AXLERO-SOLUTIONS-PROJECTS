@@ -1,13 +1,21 @@
 """OmniBrain FastAPI application."""
 
+import sys
+from pathlib import Path
 from contextlib import asynccontextmanager
 from collections.abc import AsyncGenerator
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from app.core.config import settings, PROJECT_ROOT, BACKEND_ROOT
+
+# Ensure both PROJECT_ROOT (OmniBrain) and BACKEND_ROOT (OmniBrain/backend) are in sys.path
+for p in [str(PROJECT_ROOT), str(BACKEND_ROOT)]:
+    if p not in sys.path:
+        sys.path.insert(0, p)
+
 from app.api.router import api_router
-from app.core.config import settings
 from app.core.database import init_db
 from app.core.logging import configure_logging, get_logger
 
@@ -35,7 +43,7 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.cors_origins_list,
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
