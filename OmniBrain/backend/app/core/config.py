@@ -61,8 +61,6 @@ class Settings(BaseSettings):
     JWT_REFRESH_TOKEN_EXPIRE_DAYS: int = 7
 
     OPENAI_API_KEY: str = ""
-    GEMINI_API_KEY: str = ""
-    LLM_PROVIDER: str = "auto"
 
     STORAGE_PATH: str = _default_storage_path()
     LOCAL_SQLITE_PATH: str = _default_local_db_path()
@@ -71,21 +69,11 @@ class Settings(BaseSettings):
     LOG_LEVEL: str = "INFO"
 
     @property
-    def active_llm_provider(self) -> str:
-        if self.LLM_PROVIDER.lower() in {"openai", "gemini"}:
-            return self.LLM_PROVIDER.lower()
-        if self.GEMINI_API_KEY and not self.OPENAI_API_KEY:
-            return "gemini"
-        return "openai"
-
-    @property
-    def has_api_key(self) -> bool:
-        return bool(self.OPENAI_API_KEY or self.GEMINI_API_KEY)
-
-    @property
     def database_url(self) -> str:
         if self.DATABASE_URL:
             return self.DATABASE_URL
+        if self.can_fallback_to_local_sqlite:
+            return self.local_sqlite_url
         return (
             f"postgresql+asyncpg://{self.POSTGRES_USER}:{self.POSTGRES_PASSWORD}"
             f"@{self.POSTGRES_HOST}:{self.POSTGRES_PORT}/{self.POSTGRES_DB}"

@@ -16,8 +16,8 @@ export default defineConfig(() => {
       hmr: hmrDisabled
         ? false
         : {
-            clientPort: 3000,
-            port: 3000,
+            clientPort: Number(process.env.PORT) || 3002,
+            port: Number(process.env.PORT) || 3002,
           },
       watch: hmrDisabled ? null : {},
       fs: {
