@@ -213,6 +213,10 @@ FedMed/
 - GitHub: [@ymp7](https://github.com/ymp7)
 - LinkedIn: [Monish Prasanna](https://www.linkedin.com/in/yegireddy-monish-prasanna/)
 
+## Vicky Kuthe
+-Github:[@vickykuthe](htttps://github.com/vickykuthe)
+-Linkedin:[Vicky Kuthe](https://www.linkedin.com/in/vicky-kuthe/)
+
 ## Creators
 
 <div align="center">
