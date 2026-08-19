@@ -1,4 +1,5 @@
 # FedMed
+FedMed is a privacy-first Federated Learning platform for collaborative 3D MRI brain tumor segmentation. It allows multiple hospitals to train a shared AI model without sharing patient MRI data. The model is sent to each hospital, trained locally, and only model updates are shared and aggregated.
 
 <div align="center">
 
