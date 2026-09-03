@@ -56,3 +56,8 @@ h2 {
     font-weight: 600;
     margin-bottom: 16px;
 }
+
+p {
+    font-size: 16px;
+    line-height: 1.6;
+}
