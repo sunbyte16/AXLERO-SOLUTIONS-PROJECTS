@@ -24,11 +24,6 @@
     transform: translateY(0);
 }
 
-/* Button Focus - Accessibility */
-.btn:focus-visible {
-    outline: 3px solid #80bdff;
-    outline-offset: 2px;
-}
 
 
 
