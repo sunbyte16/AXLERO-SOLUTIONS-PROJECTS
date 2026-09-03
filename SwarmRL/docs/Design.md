@@ -2,6 +2,15 @@
 
 # SwarmRL - Design System
 
+# Top Navigation Bar
+
+The top navigation bar provides persistent global context, real-time connection status, simulation clock controls, and user workspace controls.
+
+```text
+┌──────────────────────────────────────────────────────────────────────────────────┐
+│ [Logo] SwarmRL  ::  Env: CityGrid_v4  ::  [ ● 64 Active ]  [ 00:14:32 ]  [User]  │
+└─────────────────────────────────────────────────────────────────────────
+
 Version: 1.0
 
 Status: Planning
