@@ -12,6 +12,7 @@ Collaborative 3D MRI brain tumor segmentation across multi-hospital networks wit
 [![Encryption](https://img.shields.io/badge/Privacy-TenSEAL%20%7C%20HE-10B981?style=for-the-badge)](#features)
 [![Compliance](https://img.shields.io/badge/Compliance-HIPAA%20%7C%20GDPR-00C853?style=for-the-badge)](#features)
 [![Deployment](https://img.shields.io/badge/Deployment-Docker%20Compose-2496ED?style=for-the-badge&logo=docker&logoColor=white)](#quick-start)
+[![Changelog](https://img.shields.io/badge/Changelog-v0.1.0-blue?style=for-the-badge)](CHANGELOG.md)
 
 [![GitHub](https://img.shields.io/badge/GitHub-sunbyte16-181717?style=flat-square&logo=github)](https://github.com/sunbyte16)
 [![GitHub](https://img.shields.io/badge/GitHub-ymp7-181717?style=flat-square&logo=github)](https://github.com/ymp7)
