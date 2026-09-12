@@ -107,3 +107,12 @@ export interface MedicalScan {
   currentSliceDiceScore: number;
   currentSliceIoU: number;
 }
+
+export interface NodeConvergenceTelemetry {
+  nodeId: string;
+  round: number;
+  lossDelta: number;
+  convergenceRate: number;
+  reliabilityScore: number;
+  timestamp: string;
+}
