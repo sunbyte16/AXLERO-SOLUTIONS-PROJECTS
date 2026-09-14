@@ -7,6 +7,20 @@ import {
 } from 'lucide-react';
 import { MedicalScan } from '../types';
 
+export interface MedicalWindowPreset {
+  id: string;
+  name: string;
+  contrast: number;
+  description: string;
+}
+
+export const MEDICAL_WINDOW_PRESETS: MedicalWindowPreset[] = [
+  { id: 'standard', name: 'Brain Standard', contrast: 1.1, description: 'Balanced gray-white matter' },
+  { id: 'soft_tissue', name: 'Soft Tissue', contrast: 1.35, description: 'Enhanced parenchymal margin' },
+  { id: 'tumor_edema', name: 'Tumor / Edema', contrast: 1.5, description: 'High contrast T2-FLAIR delineation' },
+  { id: 'bone', name: 'Cranial Bone', contrast: 0.85, description: 'Calvarial cortical bone profile' },
+];
+
 interface MRIViewerProps {
   scans: MedicalScan[];
 }
@@ -20,7 +34,8 @@ export const MRIViewer: React.FC<MRIViewerProps> = ({ scans }) => {
   const [showPrediction, setShowPrediction] = useState(true);
   const [showGroundTruth, setShowGroundTruth] = useState(false);
   const [overlayOpacity, setOverlayOpacity] = useState<number>(0.65);
-  const [contrastLevel] = useState<number>(1.1);
+  const [activeWindowPreset, setActiveWindowPreset] = useState<string>('standard');
+  const [contrastLevel, setContrastLevel] = useState<number>(1.1);
 
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
