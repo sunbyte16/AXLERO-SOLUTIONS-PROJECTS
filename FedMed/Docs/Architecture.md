@@ -56,3 +56,18 @@
 - **Differential Privacy**: DP-SGD with noise multiplier $\sigma \in [0.5, 2.0]$, clipping threshold $C = 1.0$, privacy budget limit $\epsilon \le 10.0, \delta = 10^{-5}$.
 - **Node Identity & Auth**: X.509 Certificates, mTLS authentication, JWT Tokens for Admin API access.
 
+---
+
+### 4. Differential Privacy & Homomorphic Encryption Formal Guarantees
+
+#### 4.1 Renyi Differential Privacy (RDP) & Privacy Budget Accounting
+FedMed implements DP-SGD based on the Gaussian mechanism. For gradient query function $f$ with sensitivity $\Delta_2(f) = \frac{2C}{|B|}$, the calibrated noise variance is:
+$$\sigma = \frac{\sqrt{2 \ln(1.25/\delta)} \cdot C}{\varepsilon}$$
+
+Over $T$ multi-institution communication rounds with subsampling ratio $q = \frac{|B|}{N}$, cumulative privacy loss $(\varepsilon, \delta)$ is tracked via analytical moments accountant:
+$$\varepsilon(\delta) = \min_{\alpha > 1} \left( T \cdot \frac{\alpha q^2}{2 \sigma^2} + \frac{\ln(1/\delta)}{\alpha - 1} \right)$$
+
+#### 4.2 CKKS Homomorphic Encryption Parameter Selection
+- **Polynomial Modulus Degree ($N$)**: $8192$ (provides $>128$-bit quantum security under RLWE hard problem assumptions).
+- **Coefficient Modulus Chain**: $\{60, 40, 40, 60\}$ bits with initial scaling factor $\Delta = 2^{40}$.
+- **Galois & Relin Keys**: Rotational slot evaluation keys generated locally at each hospital silo, preventing central server or adversarial proxy eavesdropping.
