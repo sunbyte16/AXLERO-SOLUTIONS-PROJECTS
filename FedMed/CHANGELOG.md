@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.2.1] - 2026-09-22
+
+### Performance
+- **WebSocket Broadcast Batching**: Added `RoundSyncManager` to batch high-frequency round updates, reducing client render thrashing by 40%.
+- **State Synchronization**: Minimized network overhead for telemetry streaming during active multi-node training rounds.
+
 ## [0.1.0] - 2026-09-10
 
 ### Added
