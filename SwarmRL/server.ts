@@ -7,6 +7,7 @@ import 'dotenv/config';
 import express from 'express';
 import http from 'http';
 import path from 'path';
+import fs from 'fs';
 import { createServer as createViteServer } from 'vite';
 import { WebSocketServer, WebSocket } from 'ws';
 import jwt from 'jsonwebtoken';
@@ -297,14 +298,31 @@ async function startServer() {
     res.json(trainer.getCheckpoints());
   });
 
-  // Vite Middleware Setup
-  let vite: any = null;
+  // Vite Integration in Development / Static Files in Production
   if (process.env.NODE_ENV !== 'production') {
-    vite = await createViteServer({
-      server: { middlewareMode: true },
+    const vite = await createViteServer({
+      server: {
+        middlewareMode: true,
+        hmr: {
+          port: Number(process.env.HMR_PORT) || 24679,
+        },
+      },
       appType: 'spa',
     });
     app.use(vite.middlewares);
+    app.use('*', async (req, res, next) => {
+      const url = req.originalUrl;
+      if (url.startsWith('/api') || url.startsWith('/ws')) return next();
+      try {
+        const indexPath = path.resolve(process.cwd(), 'index.html');
+        let template = fs.readFileSync(indexPath, 'utf-8');
+        template = await vite.transformIndexHtml(url, template);
+        res.status(200).set({ 'Content-Type': 'text/html' }).end(template);
+      } catch (e) {
+        vite.ssrFixStacktrace(e);
+        next(e);
+      }
+    });
   } else {
     const distPath = path.join(process.cwd(), 'dist');
     app.use(express.static(distPath));
@@ -313,7 +331,7 @@ async function startServer() {
     });
   }
 
-  // Unified upgrade handler: /ws -> simulation; else -> Vite HMR (when available)
+  // Simulation WebSocket Upgrade Handler on /ws
   server.on('upgrade', (request, socket, head) => {
     const url = request.url || '';
     if (url.startsWith('/ws')) {
@@ -322,27 +340,6 @@ async function startServer() {
       });
       return;
     }
-    // Vite 6 exposes vite.ws.ws as the underlying ws WebSocketServer in middleware mode
-    if (vite) {
-      const viteWs =
-        (vite.ws && (vite.ws.ws || vite.ws)) ||
-        (vite.httpServer && vite.httpServer._wsServer) ||
-        null;
-      if (viteWs && typeof viteWs.handleUpgrade === 'function') {
-        try {
-          viteWs.handleUpgrade(request, socket, head, (conn: any) => {
-            viteWs.emit('connection', conn, request);
-          });
-          return;
-        } catch (err) {
-          console.error('[Vite HMR] upgrade error:', err);
-          socket.destroy();
-          return;
-        }
-      }
-    }
-    // No handler matched
-    socket.destroy();
   });
 
   server.listen(PORT, '0.0.0.0', () => {

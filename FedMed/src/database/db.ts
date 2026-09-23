@@ -75,10 +75,16 @@ export async function createUser(email: string, password: string, fullName: stri
     saveDatabase();
     
     const userStmt = db.prepare('SELECT id, email, full_name, role, created_at FROM users WHERE email = ?');
-    const user = userStmt.get([email]);
+    const user = userStmt.getAsObject([email]);
     userStmt.free();
     
-    return user;
+    return {
+      id: Number(user.id),
+      email: String(user.email),
+      full_name: String(user.full_name),
+      role: String(user.role || 'user'),
+      created_at: String(user.created_at)
+    };
   } catch (error: any) {
     if (error.message && error.message.includes('UNIQUE')) {
       throw new Error('Email already exists');
@@ -89,14 +95,14 @@ export async function createUser(email: string, password: string, fullName: stri
 
 export async function validateUser(email: string, password: string) {
   const stmt = db.prepare('SELECT * FROM users WHERE email = ?');
-  const user = stmt.get([email]);
+  const user = stmt.getAsObject([email]);
   stmt.free();
   
-  if (!user) {
+  if (!user || !user.id || !user.password) {
     return null;
   }
   
-  const isValid = await bcrypt.compare(password, user.password);
+  const isValid = await bcrypt.compare(password, String(user.password));
   if (!isValid) {
     return null;
   }
@@ -108,11 +114,11 @@ export async function validateUser(email: string, password: string) {
   saveDatabase();
   
   return {
-    id: user.id,
-    email: user.email,
-    fullName: user.full_name,
-    role: user.role,
-    createdAt: user.created_at
+    id: Number(user.id),
+    email: String(user.email),
+    fullName: String(user.full_name),
+    role: String(user.role || 'user'),
+    createdAt: String(user.created_at)
   };
 }
 
@@ -129,24 +135,24 @@ export function createSession(userId: number, token: string, expiresAt: Date) {
 
 export function validateSession(token: string) {
   const stmt = db.prepare(`
-    SELECT s.*, u.id, u.email, u.full_name, u.role 
+    SELECT s.id as session_id, s.user_id, u.email, u.full_name, u.role 
     FROM sessions s 
     JOIN users u ON s.user_id = u.id 
     WHERE s.token = ? AND s.expires_at > CURRENT_TIMESTAMP
   `);
-  const session = stmt.get([token]);
+  const session = stmt.getAsObject([token]);
   stmt.free();
   
-  if (!session) {
+  if (!session || !session.session_id) {
     return null;
   }
   
   return {
-    id: session.id,
-    userId: session.user_id,
-    email: session.email,
-    fullName: session.full_name,
-    role: session.role
+    id: String(session.session_id),
+    userId: Number(session.user_id),
+    email: String(session.email),
+    fullName: String(session.full_name),
+    role: String(session.role || 'user')
   };
 }
 

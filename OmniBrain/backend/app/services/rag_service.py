@@ -1,10 +1,8 @@
 """RAG pipeline service."""
 
 from dataclasses import dataclass
-
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.core.config import settings
 from app.core.logging import get_logger
 from app.models.user import User
 from app.schemas import CitationSchema
@@ -26,18 +24,6 @@ class RAGService:
 
     async def generate_response(self, user: User, query: str) -> RAGResult:
         """Generate a grounded response using the agent pipeline."""
-        if not settings.has_api_key:
-            return RAGResult(
-                answer=(
-                    "OmniBrain is running, but no API key is configured. "
-                    "Add OPENAI_API_KEY or GEMINI_API_KEY to your .env file, upload documents, "
-                    "and the RAG pipeline will retrieve and cite relevant content."
-                ),
-                citations=[],
-                confidence=0.0,
-                agent_used="system",
-            )
-
         try:
             from rag.pipeline import run_rag_pipeline
 
@@ -51,7 +37,7 @@ class RAGService:
         except Exception as exc:
             logger.error("rag_pipeline_failed", error=str(exc))
             return RAGResult(
-                answer="I encountered an error processing your request. Please try again.",
+                answer=f"I encountered an issue querying the agent pipeline: {exc}. Please verify document uploads and retry.",
                 citations=[],
                 confidence=0.0,
                 agent_used="error",

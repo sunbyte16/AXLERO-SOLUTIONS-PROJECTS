@@ -12,17 +12,17 @@ Upload documents, index knowledge, chat with grounded AI, and receive citation-b
 [![Vector DB](https://img.shields.io/badge/Vector%20DB-Qdrant-DC382D?style=for-the-badge)](#architecture)
 [![Cache](https://img.shields.io/badge/Cache-Redis-D82C20?style=for-the-badge&logo=redis&logoColor=white)](#architecture)
 [![AI](https://img.shields.io/badge/AI-LangGraph%20%7C%20OpenAI-111827?style=for-the-badge)](#features)
-[![Deployment](https://img.shields.io/badge/Deployment-Docker%20Compose-2496ED?style=for-the-badge&logo=docker&logoColor=white)](#quick-start)
+[![Docker Ready](https://img.shields.io/badge/Deployment-Docker%20Compose-2496ED?style=for-the-badge&logo=docker&logoColor=white)](#quick-start)
 
 [![GitHub](https://img.shields.io/badge/GitHub-sunbyte16-181717?style=flat-square&logo=github)](https://github.com/sunbyte16)
-[![GitHub](https://img.shields.io/badge/GitHub-ymp7-181717?style=flat-square&logo=github)](https://github.com/ymp7)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Sunil%20Sharma-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/sunil-kumar-bb88bb31a/)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Monish%20Prasanna-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/yegireddy-monish-prasanna/)
 [![Portfolio](https://img.shields.io/badge/Portfolio-Visit%20Site-7C3AED?style=flat-square&logo=netlify&logoColor=white)](https://lively-dodol-cc397c.netlify.app)
 
 </div>
 
-**OmniBrain** is an enterprise-ready, AI-powered Retrieval-Augmented Generation (RAG) platform that helps teams securely search, understand, and interact with documents using intelligent AI agents. It delivers accurate, context-aware answers, supports multiple data types, and automates workflows with enterprise-grade security and scalability.
+## Overview
+
+**OmniBrain** is an enterprise-ready, agentic, multi-modal Retrieval-Augmented Generation platform built for teams that need secure document intelligence, grounded responses, and scalable AI workflows.
 
 It combines:
 
@@ -55,96 +55,6 @@ It combines:
 | DevOps | Docker, Docker Compose |
 
 ## Architecture
-
-```text
-                          OMNIBRAIN ARCHITECTURE
-
-                            +----------------------+
-                            |       Users          |
-                            | Web | Mobile | API   |
-                            +----------+-----------+
-                                       |
-                                       v
-+------------------------------------------------------------------+
-|                         FRONTEND (React)                         |
-| React + TypeScript + Vite + Tailwind CSS                         |
-| Components:                                                      |
-| • Authentication                                                 |
-| • Dashboard                                                      |
-| • Chat Interface                                                 |
-| • Document Upload                                                |
-| • Search                                                         |
-| • Settings                                                       |
-+------------------------------+-----------------------------------+
-                               |
-                               | REST API / WebSocket
-                               v
-+------------------------------------------------------------------+
-|                     BACKEND (FastAPI + Python)                   |
-|                                                                  |
-|  +----------------+  +----------------+  +--------------------+  |
-|  | Authentication |  | Document API   |  | Chat API           |  |
-|  +----------------+  +----------------+  +--------------------+  |
-|                                                                  |
-|  +------------------------------------------------------------+  |
-|  | Business Logic / Services                                 |  |
-|  | • User Management                                         |  |
-|  | • File Processing                                         |  |
-|  | • Query Processing                                        |  |
-|  | • AI Agent Controller                                     |  |
-|  +------------------------------------------------------------+  |
-+------------------------------+-----------------------------------+
-                               |
-                               v
-+------------------------------------------------------------------+
-|                AI ORCHESTRATION (LangGraph)                      |
-|                                                                  |
-|  User Query                                                      |
-|       |                                                          |
-|       v                                                          |
-|  LangGraph Workflow                                              |
-|       |                                                          |
-|       +------------> LangChain                                  |
-|                             |                                   |
-|                             +------------> OpenAI LLM           |
-|                                              |                  |
-|                                              v                  |
-|                                     Generated Response          |
-+------------------------------+-----------------------------------+
-                               |
-                               v
-+------------------------------------------------------------------+
-|                          DATA LAYER                              |
-|                                                                  |
-| PostgreSQL  --> Users, Workspaces, Metadata                      |
-| Qdrant      --> Vector Embeddings                                |
-| Redis       --> Cache & Sessions                                 |
-| File Storage--> Uploaded Documents                               |
-+------------------------------+-----------------------------------+
-                               ^
-                               |
-+------------------------------------------------------------------+
-|                    DOCUMENT INGESTION PIPELINE                   |
-|                                                                  |
-| Upload Document                                                  |
-|        ↓                                                         |
-| Parse Text                                                       |
-|        ↓                                                         |
-| Chunk Document                                                   |
-|        ↓                                                         |
-| Generate Embeddings (OpenAI)                                     |
-|        ↓                                                         |
-| Store Vectors in Qdrant                                          |
-|        ↓                                                         |
-| Save Metadata in PostgreSQL                                      |
-+------------------------------+-----------------------------------+
-                               |
-                               v
-+------------------------------------------------------------------+
-|                    DEPLOYMENT / DEVOPS                           |
-| Docker • Docker Compose                                          |
-+------------------------------------------------------------------+
-```
 
 ### System Flow
 
@@ -362,22 +272,17 @@ OmniBrain/
 
 For the full roadmap, see `Documents/Phases.md`.
 
-## Connect With Us
+## Connect With Me
 
-### Sunil Sharma
 - GitHub: [@sunbyte16](https://github.com/sunbyte16)
 - LinkedIn: [Sunil Sharma](https://www.linkedin.com/in/sunil-kumar-bb88bb31a/)
 - Portfolio: [lively-dodol-cc397c.netlify.app](https://lively-dodol-cc397c.netlify.app)
 
-### Monish Prasanna
-- GitHub: [@ymp7](https://github.com/ymp7)
-- LinkedIn: [Monish Prasanna](https://www.linkedin.com/in/yegireddy-monish-prasanna/)
-
-## Creators
+## Creator
 
 <div align="center">
 
-### Crafted By ♥  𝕊𝕦𝕟𝕚𝕝 𝕊𝕙𝕒𝕣𝕞𝕒 & 𝕄𝕠𝕟𝕚𝕤𝕙 ℙ𝕣𝕒𝕤𝕒𝕟𝕟𝕒
+### Crafted By ♥  𝕊𝕦𝕟𝕚𝕝 𝕊𝕙𝕒𝕣𝕞𝕒
 
 </div>
 
