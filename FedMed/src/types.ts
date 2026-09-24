@@ -116,3 +116,17 @@ export interface NodeConvergenceTelemetry {
   reliabilityScore: number;
   timestamp: string;
 }
+
+export interface DicomStudyMetadata {
+  studyInstanceUid: string;
+  modality: string;
+  seriesDescription: string;
+  patientAge: string;
+  sliceThicknessMm: number;
+  repetitionTimeMs: number;
+  echoTimeMs: number;
+  magneticFieldStrengthTesla: number;
+  pixelSpacing: [number, number];
+  matrixSize: [number, number];
+  anonymized: boolean;
+}
