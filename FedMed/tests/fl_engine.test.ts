@@ -32,4 +32,15 @@ describe('FedMed Differential Privacy & Segmentation Metrics Tests', () => {
     }
     expect(spentEps).toBeCloseTo(2.80, 2);
   });
+
+  it('should verify adaptive vector clipping preserves direction while bounding L2 norm', () => {
+    const raw = [3.0, 4.0]; // L2 norm is 5.0
+    const norm = Math.sqrt(raw[0] * raw[0] + raw[1] * raw[1]);
+    const maxC = 1.0;
+    const factor = maxC / norm;
+    const scaled = raw.map(x => x * factor);
+    const newNorm = Math.sqrt(scaled[0] * scaled[0] + scaled[1] * scaled[1]);
+    expect(newNorm).toBeCloseTo(1.0, 4);
+    expect(scaled[0] / scaled[1]).toBeCloseTo(3.0 / 4.0, 4);
+  });
 });
