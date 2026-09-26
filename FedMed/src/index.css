@@ -50,3 +50,11 @@ body {
   color: #e2e8f0;
   font-family: 'Inter', sans-serif;
 }
+
+/* DICOM MRI Canvas viewport styling */
+.dicom-canvas-container {
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  transition: all 0.2s ease-in-out;
+}

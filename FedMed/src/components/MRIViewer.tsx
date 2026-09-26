@@ -36,6 +36,8 @@ export const MRIViewer: React.FC<MRIViewerProps> = ({ scans }) => {
   const [overlayOpacity, setOverlayOpacity] = useState<number>(0.65);
   const [activeWindowPreset, setActiveWindowPreset] = useState<string>('standard');
   const [contrastLevel, setContrastLevel] = useState<number>(1.1);
+  const [zoomFactor, setZoomFactor] = useState<number>(1.0);
+  const [isLooping, setIsLooping] = useState<boolean>(false);
 
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
