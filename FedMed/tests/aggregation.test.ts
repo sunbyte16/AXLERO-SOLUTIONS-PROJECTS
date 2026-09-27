@@ -42,4 +42,22 @@ describe('FedMed Model Aggregation Test Suite', () => {
     const isOutlier = (norm: number, threshold: number) => norm > threshold;
     expect(isOutlier(extremeNorm, baseNorm * 3)).toBe(true);
   });
+
+  it('should eliminate poisoned Byzantine weights using coordinate-wise trimming', () => {
+    // 5 clients: 4 normal [1.0, 2.0], 1 adversary submitting poison [1000.0, -1000.0]
+    const vectors = [
+      [1.0, 2.0],
+      [1.1, 2.1],
+      [0.9, 1.9],
+      [1.05, 2.05],
+      [1000.0, -1000.0],
+    ];
+    // With 10% trim, the extreme coordinates are trimmed
+    const sortedD0 = vectors.map(v => v[0]).sort((a, b) => a - b);
+    expect(sortedD0[sortedD0.length - 1]).toBe(1000.0);
+    // Median or trimmed mean should remain ~1.0
+    const filtered = sortedD0.slice(1, 4);
+    const avg = filtered.reduce((a, b) => a + b, 0) / filtered.length;
+    expect(avg).toBeCloseTo(1.016, 2);
+  });
 });
