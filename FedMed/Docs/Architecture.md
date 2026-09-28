@@ -71,3 +71,8 @@ $$\varepsilon(\delta) = \min_{\alpha > 1} \left( T \cdot \frac{\alpha q^2}{2 \si
 - **Polynomial Modulus Degree ($N$)**: $8192$ (provides $>128$-bit quantum security under RLWE hard problem assumptions).
 - **Coefficient Modulus Chain**: $\{60, 40, 40, 60\}$ bits with initial scaling factor $\Delta = 2^{40}$.
 - **Galois & Relin Keys**: Rotational slot evaluation keys generated locally at each hospital silo, preventing central server or adversarial proxy eavesdropping.
+
+
+### 5. Hospital Silo Security Boundary & Compliance Matrix
+- **Zero-Raw-Data Protocol**: Under no circumstances do raw DICOM MRI slices leave hospital boundaries.
+- **Audit Compliance**: All weight transmissions, DP epsilon expenditures, and aggregation rounds logged with SHA-256 integrity hashes.

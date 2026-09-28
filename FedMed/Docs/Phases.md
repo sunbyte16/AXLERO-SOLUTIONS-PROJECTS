@@ -11,7 +11,10 @@
 
 ---
 
-### Phase 2: Flower Server & Multi-Node gRPC Communication
+### Phase 2: Flower Server & Multi-Node gRPC Communication (IN PROGRESS)
+- **gRPC Streaming Channel Specs**: Implemented bidirectional weight streaming over HTTP/2 with gzip compression.
+- **Mutual TLS (mTLS) Protocol**: 4096-bit RSA certificate exchange for node mutual authentication.
+- **Keepalive Policy**: 30s client keepalive ping with 10s ACK timeout.
 - Deploy standalone Python Flower Server with gRPC mTLS transport layer.
 - Build multi-process hospital node agent worker instances.
 - Implement weight serialization with Protocol Buffers (`fedmed.proto`).
