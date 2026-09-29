@@ -37,3 +37,21 @@ def validate_hospital_node_health(last_seen_timestamp: float, mtls_status: str) 
         "health_score": health_score,
         "status": status
     }
+
+def batch_validate_cluster_nodes(nodes_status_map: Dict[str, Dict[str, Any]]) -> Dict[str, Any]:
+    """
+    Validates an entire cluster of hospital nodes in a single execution pass.
+    """
+    results = {}
+    healthy_count = 0
+    for node_id, data in nodes_status_map.items():
+        val = validate_hospital_node_health(data.get("last_seen", 0.0), data.get("mtls_status", "REVOKED"))
+        results[node_id] = val
+        if val["status"] == "HEALTHY":
+            healthy_count += 1
+    return {
+        "total_nodes": len(nodes_status_map),
+        "healthy_nodes": healthy_count,
+        "cluster_operational": (healthy_count >= max(1, len(nodes_status_map) // 2)),
+        "nodes": results
+    }
