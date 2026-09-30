@@ -2,7 +2,7 @@
   "name": "fedmed-ai-engine",
   "description": "Secure Federated Learning Platform for Medical Imaging with Homomorphic Encryption and Differential Privacy",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "scripts": {
     "dev": "tsx server.ts",

@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.2.5] - 2026-09-30
+
+### Summary
+- **Collaborative Production Milestone**: Integrated Byzantine-resilient aggregation, DICOM MRI slice navigation presets, and automated differential privacy tracking across distributed hospital nodes.
+
 ## [0.2.4] - 2026-09-30
 
 ### Added
