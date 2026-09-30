@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.2.4] - 2026-09-30
+
+### Added
+- **Integration Test Suite**: Added end-to-end multi-hospital federation simulation test suite.
+- **DICOM Header Parsing**: Anonymized SOP tag extraction with HIPAA de-identification validation.
+- **Byzantine Resistance**: Coordinate-wise trimmed mean strategy to eliminate malicious weight updates.
+
 ## [0.2.1] - 2026-09-22
 
 ### Performance
