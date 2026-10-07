@@ -1,15 +1,41 @@
 {
   "name": "fedmed-ai-engine",
   "description": "Secure Federated Learning Platform for Medical Imaging with Homomorphic Encryption and Differential Privacy",
-  "private": true,
-  "version": "1.0.1",
+  "version": "1.0.0",
+  "author": "Sunil Sharma (https://github.com/sunbyte16)",
+  "license": "MIT",
+  "homepage": "https://lively-dodol-cc397c.netlify.app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sunbyte16/fedmed-ai-engine.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sunbyte16/fedmed-ai-engine/issues"
+  },
+  "keywords": [
+    "federated-learning",
+    "medical-imaging",
+    "brain-tumor-segmentation",
+    "homomorphic-encryption",
+    "differential-privacy",
+    "tenseal",
+    "pytorch",
+    "3d-unet",
+    "gemini-api",
+    "hipaa-compliant",
+    "gdpr",
+    "react-19",
+    "vite",
+    "tailwind-css"
+  ],
   "type": "module",
   "scripts": {
     "dev": "tsx server.ts",
     "build": "vite build && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs",
     "start": "node dist/server.cjs",
     "clean": "rm -rf dist server.cjs",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit",
+    "screenshots": "node take_screenshots.cjs"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",
@@ -36,6 +62,7 @@
     "@types/node": "^22.14.0",
     "autoprefixer": "^10.4.21",
     "esbuild": "^0.25.0",
+    "puppeteer-core": "^25.12.0",
     "tailwindcss": "^4.1.14",
     "tsx": "^4.21.0",
     "typescript": "~5.8.2",
